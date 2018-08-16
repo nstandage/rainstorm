@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D820D621212530760024EE52 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820D620212530760024EE52 /* WeatherRequest.swift */; };
+		D820D624212533450024EE52 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820D623212533450024EE52 /* Configuration.swift */; };
 		D87D3DC42123968E001B545B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D3DC32123968E001B545B /* AppDelegate.swift */; };
 		D87D3DC62123968E001B545B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D3DC52123968E001B545B /* RootViewController.swift */; };
 		D87D3DC92123968E001B545B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87D3DC72123968E001B545B /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D820D620212530760024EE52 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
+		D820D623212533450024EE52 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D87D3DC02123968E001B545B /* Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87D3DC32123968E001B545B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D87D3DC52123968E001B545B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D820D61F212530550024EE52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D820D620212530760024EE52 /* WeatherRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D820D6222125332D0024EE52 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D820D623212533450024EE52 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		D87D3DB72123968E001B545B = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +82,8 @@
 		D87D3DC22123968E001B545B /* Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
+				D820D6222125332D0024EE52 /* Configuration */,
+				D820D61F212530550024EE52 /* Models */,
 				D87D3DE22123A200001B545B /* Extensions */,
 				D87D3DD5212396B8001B545B /* Application Delegate */,
 				D87D3DD6212396FB001B545B /* View Controllers */,
@@ -232,6 +254,8 @@
 				D87D3DC42123968E001B545B /* AppDelegate.swift in Sources */,
 				D87D3DE12123A16C001B545B /* WeekViewController.swift in Sources */,
 				D87D3DDF2123A0F6001B545B /* DayViewController.swift in Sources */,
+				D820D621212530760024EE52 /* WeatherRequest.swift in Sources */,
+				D820D624212533450024EE52 /* Configuration.swift in Sources */,
 				D87D3DE42123A229001B545B /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

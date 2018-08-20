@@ -12,6 +12,15 @@ final class RootViewController: UIViewController {
 
     // MARK: - Properties
     
+    var viewModel: RootViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            
+            setupViewModel(with: viewModel)
+        }
+    }
     private let dayViewController: DayViewController = {
         guard let dayViewController = UIStoryboard.main.instantiateViewController(withIdentifier: DayViewController.storyboardIdentifier) as? DayViewController else {
             fatalError("Unable to Instantiate Day View Controller")
@@ -42,11 +51,8 @@ final class RootViewController: UIViewController {
         // Setup Child View Controllers
         setupChildViewControllers()
         
-        // Feth Weather Data
-        fetchWeatherData()
     }
 
-    
     private func setupChildViewControllers() {
         addChildViewController(dayViewController)
         addChildViewController(weekViewController)
@@ -69,23 +75,19 @@ final class RootViewController: UIViewController {
         
     }
     
-    
-    private func fetchWeatherData() {
-        
-        // Initialize Weather Request
-        let weatherRequest = WeatherRequest(baseUrl: WeatherService.authenticatedBaseUrl, location: Defaults.location)
-        
-        // Create Data Task
-        URLSession.shared.dataTask(with: weatherRequest.url) { (data, response, error) in
+    // MARK: - Helper Methods
+    private func setupViewModel(with viewModel: RootViewModel) {
+        // Configure View Model
+        viewModel.didFetchWeatherData = { (data, error) in
             if let error = error {
-                print("Request Did Fail (\(error))")
-            } else if let response = response {
-                print(response)
+                print("Unable to Fetch Weather Data (\(error)")
+            } else if let data = data {
+                print(data)
             }
-
-            
-        }.resume()
+        }
     }
+    
+
     
 }
 

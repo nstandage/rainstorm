@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        guard let rootViewController = window?.rootViewController as? RootViewController else {
+            fatalError("Unexpected Root View Controller")
+        }
+        
+        // Initialize Root View Model
+        let rootViewModel = RootViewModel()
+        
+        // Configure Root View Controller
+        rootViewController.viewModel = rootViewModel
         // Override point for customization after application launch.
         return true
     }

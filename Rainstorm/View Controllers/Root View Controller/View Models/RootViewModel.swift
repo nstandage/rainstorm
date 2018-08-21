@@ -11,9 +11,15 @@ import Foundation
 
 class RootViewModel {
     
+    // MARK: - Types
+    
+    enum WeatherDataError: Error {
+        case noWeatherDataAvailable
+    }
+    
     // MARK: -  Type Aliases
     
-    typealias DidFetchWeatherDataCompletion = (Data?, Error?) -> Void
+    typealias DidFetchWeatherDataCompletion = (WeatherData?, WeatherDataError?) -> Void
     
     // MARK: -  Properties
     
@@ -34,10 +40,26 @@ class RootViewModel {
         
         // Create Data Task
         URLSession.shared.dataTask(with: weatherRequest.url) { [weak self] (data, response, error) in
+            if let response = response  as? HTTPURLResponse {
+                print("Status Code: \(response)")
+            }
+            
+            
             if let error = error {
-                self?.didFetchWeatherData?(nil, error)
+                print("Unable to fetch weather data: \(error)")
+                self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
             } else if let data = data {
-                self?.didFetchWeatherData?(data, nil)
+                let decoder = JSONDecoder()
+                
+                do {
+                    let darkSkyResponse = try decoder.decode(DarkSkyResponse.self, from: data)
+                    self?.didFetchWeatherData?(darkSkyResponse, nil)
+                    
+                } catch {
+                    print("Unable to Decode JSON Response: \(error)")
+                    self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
+                }
+                
             } else {
                 self?.didFetchWeatherData?(nil, nil)
             }

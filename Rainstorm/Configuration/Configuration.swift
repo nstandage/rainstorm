@@ -17,7 +17,7 @@ enum Defaults {
 
 enum WeatherService {
     private static let apiKey = "96c7c519d79b4f5a433a721294124760"
-    private static let baseUrl = URL(string: "https://api.darksky.net/forcast/")!
+    private static let baseUrl = URL(string: "https://api.darksky.net/forecast/")!
     
     static var authenticatedBaseUrl: URL {
         return baseUrl.appendingPathComponent(apiKey)
